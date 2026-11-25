@@ -4,354 +4,87 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>RITM · agenție creativă</title>
-<meta name="description" content="RITM este o agenție creativă: construim brandul, îl filmăm și îl transformăm în clienți.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='60 160 180 300'%3E%3Crect x='96' y='270' width='56' height='176' fill='%232F5BFF'/%3E%3Cpath d='M143 272 A65 77 0 0 1 208 195' stroke='%232F5BFF' stroke-width='18' fill='none'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@300;400;600&display=swap">
+<meta name="description" content="RITM, agenție creativă: brand, filmare, social media și reclame.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='60 160 180 300'%3E%3Cpath fill='%23F7D31C' d='M96 446 L96 270 L134 270 L134 272 A74 86 0 0 1 208 186 L208 204 A56 68 0 0 0 152 272 L152 446 Z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@300;500&display=swap">
 <style>
-/* VOICE: agenție creativă tânără, prietenoasă, dar profesionistă
-   IDEA: site-ul bate în ritm: secțiunile intră pe „beat-uri”, barele logo-ului pulsează
-   PICTURE: logo-ul RITM care se construiește, bare albastru-alb care urmăresc mouse-ul
-   COLOUR and TYPE: alb cald #F7F5F0, bleumarin #12162B, albastru electric #2F5BFF; Montserrat 300 + Inter
-   LAYOUT: hero întunecat pe tot ecranul, apoi secțiuni aerisite pe alb cald, cu kicker numerotat */
-:root{--bg:#F7F5F0;--card:#fff;--ink:#12162B;--mut:#4E5470;--line:#DDD9D0;--blue:#2F5BFF;--soft:#8FA6FF;--wrap:1240px}
-*{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
-a{color:inherit}
-img,svg{display:block}
-.wrap{max-width:var(--wrap);margin:0 auto;padding:0 max(5vw,20px)}
-.mont{font-family:Montserrat,sans-serif}
-.acc{color:var(--blue)}
-.dark .acc{color:var(--soft)}
-
-/* navigare */
-.nav{position:fixed;inset:0 0 auto;z-index:20;transition:background .3s,box-shadow .3s,color .3s;color:#fff}
-.nav.solid{background:rgba(247,245,240,.92);backdrop-filter:blur(10px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
-.navbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:72px}
-.navbar .lg{width:84px;color:currentColor}
-.links{display:flex;gap:28px;flex-wrap:wrap}
-.links a{text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;opacity:.8;transition:opacity .2s}
-.links a:hover{opacity:1}
-.cta{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 20px;border-radius:999px;background:var(--blue);color:#fff!important;text-decoration:none;font-weight:600;font-size:15px;white-space:nowrap;transition:transform .25s cubic-bezier(.3,1.4,.5,1),background .2s}
-.cta:hover{transform:translateY(-2px);background:#1E47E8}
-.ghost{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;border-radius:999px;border:1.5px solid currentColor;text-decoration:none;font-weight:600;font-size:16px;transition:background .2s,color .2s}
-.ghost:hover{background:#fff;color:var(--ink)}
-:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
-
-/* hero */
-.hero{position:relative;min-height:min(100svh,980px);background:var(--ink);color:#fff;display:flex;align-items:center;overflow:hidden;padding:110px 0 220px}
-.hero .wrap{width:100%;text-align:center}
-.hlogo{width:clamp(220px,40vw,520px);margin:0 auto;color:#fff}
-.hlogo .p{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);animation:grow .55s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--b) * .13s + .2s)}
-.hlogo .beat{animation:grow .55s cubic-bezier(.3,1.4,.5,1) both,pulse 1.6s ease-in-out infinite;animation-delay:calc(var(--b) * .13s + .2s),calc(var(--b) * .13s + 1.4s)}
-@keyframes pulse{0%,35%,100%{transform:scaleY(1)}15%{transform:scaleY(.72)}}
-.hlogo .x{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);animation:grow .55s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--b) * .13s + .2s)}
-.hlogo .dot{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0);animation:grow .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:calc(var(--b) * .13s + .2s)}
-.hlogo .arc{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .6s ease-out both;animation-delay:calc(var(--b) * .13s + .2s)}
-.kick{display:inline-flex;align-items:center;gap:12px;font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin:0 0 18px}
-.kick::before{content:"";width:22px;height:14px;background:linear-gradient(90deg,var(--blue) 0 6px,transparent 6px 9px,var(--ink) 9px 11px,transparent 11px 14px,var(--blue) 14px 20px,transparent 20px)}
-.dark .kick{color:#A9AFC9}
-.dark .kick::before{background:linear-gradient(90deg,var(--blue) 0 6px,transparent 6px 9px,#fff 9px 11px,transparent 11px 14px,var(--blue) 14px 20px,transparent 20px)}
-.h1{font:300 clamp(38px,6vw,76px)/1.05 Montserrat,sans-serif;letter-spacing:-.025em;margin:28px 0 18px;text-wrap:balance}
-.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.6;color:#C9CDE0;max-width:620px;margin:0 auto}
-.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-.btns .cta{min-height:48px;padding:0 26px;font-size:16px}
-.eq{position:absolute;left:0;right:0;bottom:0;height:200px;display:flex;align-items:flex-end;gap:clamp(4px,.7vw,10px);padding:0 clamp(4px,.7vw,10px);pointer-events:none}
-.eq i{flex:1;height:100%;background:var(--blue);transform-origin:50% 100%;transform:scaleY(.15);border-radius:2px 2px 0 0;opacity:.85;animation:eqz var(--d,1.2s) ease-in-out var(--dl,0s) infinite alternate}
-.eq i:nth-child(even){background:#fff;flex:.32}
-@keyframes eqz{from{transform:scaleY(var(--lo,.12))}to{transform:scaleY(var(--hi,.8))}}
+/* VOICE: o singură scenă, ca un logo animat la începutul unui film
+   IDEA: logo-ul se construiește pe bătăi și rămâne să pulseze
+   PICTURE: „ritm” mare, centrat, cu barele în gradientul lime → foc
+   COLOUR and TYPE: alb, cerneală #12162B, gradient lime → foc; Montserrat 300 + Inter
+   LAYOUT: logo în centrul ecranului, contactele pe un rând jos */
+:root{--ink:#12162B;--mut:#5A6078;--line:#E6E3DD;--g:linear-gradient(180deg,#B6FF17,#D9F21A 25%,#F7D31C 50%,#FF9A22 75%,#FE5126)}
+*{box-sizing:border-box;margin:0;min-width:0}
+html,body{height:100%}
+body{background:#fff;color:var(--ink);font:16px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100svh;overflow-x:clip}
+main{flex:1;display:grid;place-items:center;padding:48px max(5vw,20px) 24px}
+.stage{display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vw,36px);width:100%}
+.logo{width:min(78vw,880px);height:auto;display:block;cursor:pointer;overflow:visible}
+.logo .t{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);animation:grow .5s cubic-bezier(.3,1.5,.5,1) both;animation-delay:calc(var(--b)*.12s + .25s)}
+.logo .x{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0);animation:grow .45s cubic-bezier(.3,1.4,.5,1) both;animation-delay:calc(var(--b)*.12s + .25s)}
+.logo .dot{transform-box:fill-box;transform-origin:50% 50%;transform:scale(0);animation:grow .45s cubic-bezier(.3,1.8,.5,1) both;animation-delay:calc(var(--b)*.12s + .25s)}
+.logo .arc{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .55s ease-out both;animation-delay:calc(var(--b)*.12s + .25s)}
+.logo .beat{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);animation:rise .7s cubic-bezier(.3,1.6,.5,1) both,pulse 1.3s ease-in-out infinite;animation-delay:calc(var(--b)*.12s + .25s),calc(var(--b)*.12s + 1.5s + var(--off,0s))}
 @keyframes grow{to{transform:none}}
+@keyframes rise{to{transform:none}}
 @keyframes draw{to{stroke-dashoffset:0}}
-.hin{opacity:0;animation:up .8s cubic-bezier(.2,.8,.2,1) both;animation-delay:var(--t)}
-@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-
-/* secțiuni */
-.sec{padding:clamp(72px,10vw,140px) 0}
-.sec+.sec{padding-top:0}
-.h2{font:300 clamp(32px,4.4vw,58px)/1.1 Montserrat,sans-serif;letter-spacing:-.02em;margin:0;max-width:900px;text-wrap:balance}
-.intro{display:grid;gap:12px;margin-bottom:clamp(40px,6vw,72px)}
-.intro p.sub{font-size:19px;color:var(--mut);max-width:640px;margin:10px 0 0}
-.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,3vw,44px)}
-.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-h3{font:600 21px/1.3 Inter,sans-serif;margin:16px 0 8px}
-.it p,.card p{margin:0;color:var(--mut)}
-.ic{width:56px;height:56px}
-.ic .s{stroke-dasharray:240;stroke-dashoffset:240}
-.ic .b{transform-box:fill-box;transform-origin:center;transform:scale(0)}
-.rv.in .ic .s{animation:draw 1.3s cubic-bezier(.65,0,.35,1) forwards;animation-delay:calc(var(--i,0) * 110ms + .2s)}
-.rv.in .ic .b{animation:grow .5s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:calc(var(--i,0) * 110ms + .9s)}
-.it{transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
-.it:hover{transform:translateY(-6px)}
-
-/* apariție la scroll */
-.rv{opacity:0;transform:translateY(28px)}
-.rv.in{opacity:1;transform:none;transition:opacity .7s ease-out,transform .8s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 110ms)}
-.wd{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em 0 .14em;margin:-.1em 0 -.14em}
-.wd>span{display:inline-block;transform:translateY(112%);transition:transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--w) * 38ms)}
-.split.in .wd>span{transform:none}
-
-/* pentru cine */
-.who{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,80px);align-items:center}
-.quote{font:300 clamp(28px,3.4vw,44px)/1.25 Montserrat,sans-serif;letter-spacing:-.02em;margin:0}
-.quote+p{margin:22px 0 0;font-size:19px;color:var(--mut);max-width:520px}
-.card{background:var(--card);border-radius:22px;padding:30px;box-shadow:0 1px 0 rgba(18,22,43,.05);transition:transform .35s cubic-bezier(.3,1.3,.5,1),box-shadow .35s}
-.card:hover{transform:translateY(-8px);box-shadow:0 24px 50px rgba(18,22,43,.12)}
-.card h3{margin-top:0}
-.who .stack{display:grid;gap:18px}
-.who .card{display:flex;gap:20px;align-items:flex-start}
-.who .card .ic{flex:none;width:48px;height:48px}
-
-/* metoda */
-.ritm{border-top:1.5px solid var(--line)}
-.step{position:relative;padding:28px 0 150px;cursor:default}
-.step .L{font:300 clamp(72px,9vw,128px)/1 Montserrat,sans-serif;transition:color .3s}
-.step:hover .L{color:var(--blue)}
-.step p{margin:0;color:var(--mut)}
-.step .bar{position:absolute;left:0;bottom:0;width:44px;height:var(--h);background:var(--blue);transform-origin:50% 100%;transform:scaleY(0);transition:transform .7s cubic-bezier(.3,1.4,.5,1),height .35s cubic-bezier(.3,1.4,.5,1);transition-delay:calc(var(--i,0) * 130ms + .3s),0s}
-.step .bar.thin{width:12px;background:var(--ink)}
-.rv.in .bar{transform:none}
-.step:hover .bar{height:calc(var(--h) + 40px)}
-
-/* cum începem */
-.path{position:relative}
-.path .line{position:absolute;left:0;right:0;top:22px;height:2px;background:var(--line)}
-.path .line i{display:block;height:100%;background:var(--blue);transform-origin:0 50%;transform:scaleX(0);transition:transform 1.6s cubic-bezier(.6,0,.3,1) .3s}
-.path.in .line i{transform:none}
-.dot{width:46px;height:46px;border-radius:50%;background:var(--bg);border:2px solid var(--blue);color:var(--blue);display:grid;place-items:center;font-weight:600;font-size:15px;position:relative;transition:background .25s,color .25s}
-.path .it:hover .dot{background:var(--blue);color:#fff}
-
-/* întrebări */
-.faq{border-top:1.5px solid var(--line);max-width:900px}
-.faq details{border-bottom:1.5px solid var(--line)}
-.faq summary{list-style:none;display:grid;grid-template-columns:44px 1fr 30px;gap:12px;align-items:center;min-height:72px;cursor:pointer;font-weight:600;font-size:19px;padding:12px 0}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary span:first-child{color:var(--blue);font-size:14px;letter-spacing:.1em}
-.faq summary .sg{justify-self:end;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--ink);position:relative;transition:transform .3s,background .2s}
-.faq summary .sg::before,.faq summary .sg::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%)}
-.faq summary .sg::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s}
-.faq details[open] .sg{background:var(--blue);border-color:var(--blue)}
-.faq details[open] .sg::before,.faq details[open] .sg::after{background:#fff}
-.faq details[open] .sg::after{transform:translate(-50%,-50%) rotate(0)}
-.faq .ans{margin:0 0 24px 56px;color:var(--mut);max-width:680px}
-
-/* contact */
-.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
-form{display:grid;gap:22px}
-label{display:block;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
-.field{width:100%;font:16px Inter,sans-serif;color:var(--ink);background:transparent;border:0;border-bottom:1.5px solid var(--line);padding:12px 0;border-radius:0;transition:border-color .2s}
-.field:focus{outline:none;border-color:var(--blue)}
-textarea.field{resize:vertical;min-height:96px}
-form .cta{justify-self:start;border:0;cursor:pointer;min-height:50px;padding:0 28px;font-size:16px;font-family:Inter,sans-serif}
-.msg{font-size:16px;color:var(--mut);min-height:1.6em;margin:0}
-
-/* subsol */
-footer{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:72px 0 150px}
-footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-end}
-footer .lg{width:120px;color:#fff}
-footer p{margin:14px 0 0;color:#A9AFC9}
-footer .eq{height:110px;opacity:.9}
-
-@media (max-width:900px){
-  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .g3{grid-template-columns:minmax(0,1fr)}
-  .who,.contact{grid-template-columns:minmax(0,1fr)}
-  .links{display:none}
-  .path .line{display:none}
-  .step{padding-bottom:28px}
-  .step .bar{display:none}
-}
-@media (max-width:560px){
-  .g4,.g2{grid-template-columns:minmax(0,1fr)}
-  .navbar .cta{padding:0 14px;font-size:14px}
-  .eq{height:130px}
-  .eq i:nth-child(n+33){display:none}
-}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.hin{opacity:1;transform:none}.wd>span,.step .bar,.path .line i{transform:none}.ic .s{stroke-dashoffset:0}.ic .b{transform:none}html{scroll-behavior:auto}}
+@keyframes pulse{0%,40%,100%{transform:scaleY(1)}14%{transform:scaleY(.74)}}
+.tag{font:300 clamp(20px,2.6vw,34px)/1.25 Montserrat,sans-serif;letter-spacing:-.01em;text-align:center;opacity:0;animation:fade .8s ease-out 1.9s both}
+.tag b{font-weight:500}
+.sub{font-size:13px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);opacity:0;animation:fade .8s ease-out 2.2s both}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.eq{display:flex;align-items:flex-end;gap:6px;height:56px;width:min(78vw,880px);opacity:0;animation:fade .6s ease-out 2.4s both}
+.eq i{flex:1;height:100%;background:var(--g);transform-origin:50% 100%;animation:eq var(--d) ease-in-out var(--dl) infinite alternate;border-radius:1px}
+.eq i:nth-child(even){flex:.28;background:var(--ink)}
+@keyframes eq{from{transform:scaleY(var(--lo))}to{transform:scaleY(var(--hi))}}
+footer{border-top:1px solid var(--line);padding:22px max(5vw,20px);display:flex;flex-wrap:wrap;gap:14px 40px;align-items:center;justify-content:space-between;opacity:0;animation:fade .8s ease-out 2.6s both}
+.contacts{display:flex;flex-wrap:wrap;gap:12px 36px}
+.c{display:flex;flex-direction:column;gap:2px;text-decoration:none;color:var(--ink)}
+.c span{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+.c strong{font-weight:500;font-size:16px}
+a.c:hover strong{background:linear-gradient(90deg,#B6FF17,#FE5126) no-repeat 0 100%/100% 2px}
+.copy{font-size:13px;color:var(--mut)}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+@media (max-width:600px){footer{justify-content:flex-start}.eq{height:40px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important}.logo .t,.logo .x,.logo .dot,.logo .beat{transform:none}.logo .arc{stroke-dashoffset:0}.tag,.sub,.eq,footer{opacity:1}}
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="80 80 820 380"><rect x="96" y="270" width="56" height="176" fill="#2F5BFF"/><path d="M143 272 A65 77 0 0 1 208 195" stroke="#2F5BFF" stroke-width="18" fill="none"/><g fill="currentColor"><rect x="265" y="186" width="18" height="260"/><rect x="261" y="120" width="26" height="26"/><rect x="415" y="96" width="18" height="350"/><rect x="361" y="186" width="126" height="18"/><rect x="715" y="268" width="18" height="178"/><rect x="865" y="268" width="18" height="178"/></g><path d="M593 272 A65.5 77 0 0 1 724 272 M724 272 A75 77 0 0 1 874 272" stroke="currentColor" stroke-width="18" fill="none"/><rect x="546" y="270" width="56" height="176" fill="#2F5BFF"/></symbol></svg>
-
-<header class="nav" id="nav">
-  <nav class="navbar wrap" aria-label="Meniu">
-    <a href="#top" aria-label="RITM, începutul paginii"><svg class="lg" viewBox="0 0 820 380" role="img" aria-label="RITM"><use href="#lg"/></svg></a>
-    <div class="links"><a href="#servicii">Servicii</a><a href="#metoda">Metoda</a><a href="#diferenta">De ce RITM</a><a href="#intrebari">Întrebări</a></div>
-    <a class="cta" href="#contact">Hai să vorbim <span aria-hidden="true">→</span></a>
-  </nav>
-</header>
-
 <main>
-<section class="hero dark" id="top">
-  <div class="wrap">
-    <svg class="hlogo" viewBox="80 80 820 380" role="img" aria-label="RITM">
-      <rect class="p beat" style="--b:0" x="96" y="270" width="56" height="176" fill="#2F5BFF"/>
-      <path class="arc" style="--b:1" pathLength="1" d="M143 272 A65 77 0 0 1 208 195" stroke="#2F5BFF" stroke-width="18" fill="none"/>
-      <rect class="p" style="--b:2" x="265" y="186" width="18" height="260" fill="#fff"/>
-      <rect class="dot" style="--b:3" x="261" y="120" width="26" height="26" fill="#fff"/>
-      <rect class="p" style="--b:4" x="415" y="96" width="18" height="350" fill="#fff"/>
-      <rect class="x" style="--b:5" x="361" y="186" width="126" height="18" fill="#fff"/>
-      <path class="arc" style="--b:6" pathLength="1" d="M593 272 A65.5 77 0 0 1 724 272" stroke="#fff" stroke-width="18" fill="none"/>
-      <path class="arc" style="--b:7" pathLength="1" d="M724 272 A75 77 0 0 1 874 272" stroke="#fff" stroke-width="18" fill="none"/>
-      <rect class="p" style="--b:8" x="715" y="268" width="18" height="178" fill="#fff"/>
-      <rect class="p" style="--b:8" x="865" y="268" width="18" height="178" fill="#fff"/>
-      <rect class="p beat" style="--b:6" x="546" y="270" width="56" height="176" fill="#2F5BFF"/>
+  <div class="stage">
+    <svg class="logo" id="logo" viewBox="80 80 820 380" role="img" aria-label="RITM">
+      <defs><linearGradient id="G" gradientUnits="userSpaceOnUse" x1="0" y1="186" x2="0" y2="446"><stop offset="0" stop-color="#B6FF17"/><stop offset=".25" stop-color="#D9F21A"/><stop offset=".5" stop-color="#F7D31C"/><stop offset=".75" stop-color="#FF9A22"/><stop offset="1" stop-color="#FE5126"/></linearGradient></defs>
+      <rect class="t" style="--b:0" x="265" y="186" width="18" height="260" fill="#12162B"/>
+      <rect class="dot" style="--b:1" x="261" y="120" width="26" height="26" fill="#12162B"/>
+      <rect class="t" style="--b:2" x="415" y="96" width="18" height="350" fill="#12162B"/>
+      <rect class="x" style="--b:3" x="361" y="186" width="126" height="18" fill="#12162B"/>
+      <path class="arc" style="--b:4" pathLength="1" d="M593 272 A65.5 77 0 0 1 724 272" stroke="#12162B" stroke-width="18" fill="none"/>
+      <path class="arc" style="--b:5" pathLength="1" d="M724 272 A75 77 0 0 1 874 272" stroke="#12162B" stroke-width="18" fill="none"/>
+      <rect class="t" style="--b:5" x="715" y="268" width="18" height="178" fill="#12162B"/>
+      <rect class="t" style="--b:6" x="865" y="268" width="18" height="178" fill="#12162B"/>
+      <path class="beat" style="--b:7" fill="url(#G)" d="M96 446 L96 270 L134 270 L134 272 A74 86 0 0 1 208 186 L208 204 A56 68 0 0 0 152 272 L152 446 Z"/>
+      <rect class="beat" style="--b:8;--off:.65s" x="546" y="270" width="56" height="176" fill="url(#G)"/>
     </svg>
-    <h1 class="h1 hin" style="--t:1.4s">Afacerea ta, în <span class="acc">ritmul potrivit.</span></h1>
-    <p class="lead hin" style="--t:1.6s">RITM este o agenție creativă: construim brandul, îl filmăm și îl transformăm în clienți.</p>
-    <div class="btns hin" style="--t:1.8s"><a class="cta" href="#contact">Vreau mai mulți clienți</a><a class="ghost" href="#metoda">Vezi Metoda RITM</a></div>
+    <p class="tag">Afacerea ta, <b>filmată și pusă în ritm.</b></p>
+    <p class="sub">Agenție creativă</p>
+    <div class="eq" id="eq" aria-hidden="true"></div>
   </div>
-  <div class="eq" data-eq="64"></div>
-</section>
-
-<section class="sec" id="servicii">
-  <div class="wrap">
-    <div class="intro"><p class="kick">01 · Ce facem</p><h2 class="h2 split">Brand, strategie, filmare și reclame, <span class="acc">într-o singură echipă.</span></h2></div>
-    <div class="g4">
-      <div class="it rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><rect class="s" x="10" y="10" width="44" height="44"/><path class="s" d="M10 40 L26 26 L38 36 L54 22"/><rect class="b" x="40" y="14" width="8" height="8" fill="#2F5BFF" stroke="none"/></svg><h3>Branding</h3><p>Strategie de brand, logo și brandbook, ca să pornești cu o imagine clară.</p></div>
-      <div class="it rv"><svg class="ic" aria-label="Măsurăm" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M8 8 V56 H58"/><path class="s" d="M18 44 V36 M28 44 V26"/><rect class="b" x="36" y="18" width="8" height="26" fill="#2F5BFF" stroke="none"/><path class="s" d="M52 44 V12"/></svg><h3>Strategie de marketing</h3><p>Aflăm cine e publicul tău, ce vrei să obții și facem un plan clar.</p></div>
-      <div class="it rv"><svg class="ic" aria-label="Cameră foto" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><rect class="s" x="6" y="20" width="52" height="34"/><path class="s" d="M22 20 L26 12 H38 L42 20"/><circle class="s" cx="32" cy="37" r="9"/><rect class="b" x="10" y="25" width="8" height="5" fill="#2F5BFF" stroke="none"/></svg><h3>Producție video</h3><p>Scriem scenariile, filmăm și montăm noi, cu echipamentul nostru.</p></div>
-      <div class="it rv"><svg class="ic" aria-label="Social media" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M8 10 H56 V42 H28 L18 52 V42 H8 Z"/><path class="s" d="M18 22 H46"/><rect class="b" x="18" y="29" width="16" height="4" fill="#2F5BFF" stroke="none"/></svg><h3>Social media și Meta Ads</h3><p>Postăm după calendar și rulăm reclame pe Facebook și Instagram.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="pentru-cine">
-  <div class="wrap who">
-    <div>
-      <p class="kick rv">02 · Pentru cine</p>
-      <p class="quote split">„Fac și eu <span class="acc">poze și video cu telefonul</span> și le postez <span class="acc">când am timp.”</span></p>
-      <p class="rv">Ți se pare cunoscut? Conținutul postat la întâmplare nu aduce clienți. Aduce clienți conținutul gândit, filmat bine și postat în ritm.</p>
-    </div>
-    <div class="stack">
-      <div class="card rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><circle class="s" cx="32" cy="32" r="22"/><circle class="s" cx="32" cy="32" r="10"/><rect class="b" x="28" y="28" width="8" height="8" fill="#2F5BFF" stroke="none"/></svg><div><h3>Cafenele și restaurante</h3><p>Faci ceva foarte bun, dar te știu doar vecinii. Te facem văzut de oamenii din tot orașul.</p></div></div>
-      <div class="card rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M8 26 L14 12 H50 L56 26 Z"/><path class="s" d="M12 26 V54 H52 V26"/><path class="s" d="M27 54 V38 H37 V54"/><rect class="b" x="42" y="32" width="8" height="8" fill="#2F5BFF" stroke="none"/></svg><div><h3>Afaceri noi</h3><p>Pornești de la zero. Construim brandul și lansăm prima campanie, cu un plan scris.</p></div></div>
-      <div class="card rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M8 10 H56 V42 H28 L16 54 V42 H8 Z"/><rect class="b" x="18" y="22" width="8" height="8" fill="#2F5BFF" stroke="none"/></svg><div><h3>Afaceri locale care vor să crească</h3><p>Ai un produs bun și vrei clienți noi în fiecare lună, fără să pierzi timp cu postările.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="metoda">
-  <div class="wrap">
-    <div class="intro"><p class="kick">03 · Metoda RITM</p><h2 class="h2 split">De la idee la clienți, <span class="acc">în patru pași.</span></h2></div>
-    <div class="g4 ritm">
-      <div class="step rv"><div class="L">R</div><h3>Research</h3><p>Cunoaștem afacerea, publicul și starea brandului.</p><i class="bar" style="--h:70px"></i></div>
-      <div class="step rv"><div class="L">I</div><h3>Imagine</h3><p>Construim sau ajustăm brandul, apoi scenarii și filmare.</p><i class="bar thin" style="--h:110px"></i></div>
-      <div class="step rv"><div class="L">T</div><h3>Tempo</h3><p>Clipuri care se urmăresc până la capăt, postate după un calendar clar.</p><i class="bar thin" style="--h:90px"></i></div>
-      <div class="step rv"><div class="L">M</div><h3>Măsurare</h3><p>Cifre, concluzii și ajustări pentru luna următoare.</p><i class="bar" style="--h:100px"></i></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="diferenta">
-  <div class="wrap">
-    <div class="intro"><p class="kick">04 · De ce RITM</p><h2 class="h2 split">Patru lucruri pe care <span class="acc">nu le face oricine.</span></h2></div>
-    <div class="g4">
-      <div class="it rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M6 20 H42 V50 H6 Z"/><path class="s" d="M42 30 L58 22 V48 L42 40"/><rect class="b" x="12" y="26" width="8" height="8" fill="#2F5BFF" stroke="none"/></svg><h3>O singură echipă</h3><p>Facem noi brandul, strategia, filmarea și reclamele. Nu cauți separat un designer, un videograf și pe cineva pentru Meta Ads.</p></div>
-      <div class="it rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M24 42 C14 36 14 18 24 12 C30 8 38 8 42 12 C52 18 52 36 42 42 Z"/><path class="s" d="M26 50 H40 M28 57 H38"/><rect class="b" x="29" y="22" width="6" height="12" fill="#2F5BFF" stroke="none"/></svg><h3>Filmăm după un plan</h3><p>Pornim de la ce vrei să obții, scriem scenariile și abia apoi filmăm.</p></div>
-      <div class="it rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><circle class="s" cx="24" cy="20" r="8"/><path class="s" d="M8 52 V44 A16 16 0 0 1 40 44 V52"/><rect class="b" x="46" y="20" width="10" height="32" fill="#2F5BFF" stroke="none"/></svg><h3>Raportăm clienți, <span class="acc">nu like-uri</span></h3><p>Măsurăm câți oameni au sunat, au scris sau au venit datorită postărilor.</p></div>
-      <div class="it rv"><svg class="ic" aria-hidden="true" viewBox="0 0 64 64" fill="none" stroke="#12162B" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter"><path class="s" d="M14 6 H40 L50 16 V58 H14 Z"/><path class="s" d="M22 26 H42 M22 36 H42 M22 46 H34"/><rect class="b" x="38" y="42" width="10" height="10" fill="#2F5BFF" stroke="none"/></svg><h3>Totul clar de la început</h3><p>Primești un plan scris: ce facem, când și ce primești.</p></div>
-    </div>
-  </div>
-</section>
-
-
-<section class="sec" id="incepem">
-  <div class="wrap">
-    <div class="intro"><p class="kick">05 · Cum începem</p><h2 class="h2 split">De la prima discuție <span class="acc">la primele rezultate.</span></h2></div>
-    <div class="g4 path rv">
-      <div class="line" aria-hidden="true"><i></i></div>
-      <div class="it"><div class="dot">01</div><h3>Discutăm</h3><p>Ne povestești despre afacere și ce vrei să schimbi.</p></div>
-      <div class="it"><div class="dot">02</div><h3>Propunem</h3><p>Primești un plan scris, fără surprize: ce facem, când și ce primești.</p></div>
-      <div class="it"><div class="dot">03</div><h3>Filmăm și publicăm</h3><p>Venim la tine, creăm conținutul și îl postăm în ritm.</p></div>
-      <div class="it"><div class="dot">04</div><h3>Raportăm</h3><p>Vezi clar câți oameni au venit, au scris sau au sunat, și ce urmează.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="intrebari">
-  <div class="wrap">
-    <div class="intro"><p class="kick">06 · Întrebări frecvente</p><h2 class="h2 split">Ce ne întreabă <span class="acc">clienții.</span></h2></div>
-    <div class="faq rv">
-      <details open><summary><span>01</span><span>Cu ce fel de afaceri lucrați?</span><span class="sg" aria-hidden="true"></span></summary><p class="ans">Mai ales cu cafenele, restaurante și afaceri noi sau locale. Dacă ai un produs sau un serviciu bun și vrei să-l vadă mai mulți oameni, putem lucra împreună.</p></details>
-      <details><summary><span>02</span><span>Trebuie să am deja materiale filmate?</span><span class="sg" aria-hidden="true"></span></summary><p class="ans">Nu. Scriem scenariile și filmăm totul noi, cu echipamentul nostru. Dacă ai deja materiale bune, le folosim și pe ele.</p></details>
-      <details><summary><span>03</span><span>Cum stabiliți prețul?</span><span class="sg" aria-hidden="true"></span></summary><p class="ans">Pornim de la ce vrei să obții și cât valorează asta pentru afacerea ta. Primești o ofertă clară, cu tot ce intră, într-un singur preț.</p></details>
-      <details><summary><span>04</span><span>Ce fac dacă am un buget mic?</span><span class="sg" aria-hidden="true"></span></summary><p class="ans">Nu scădem calitatea, ajustăm volumul: mai puține clipuri sau o campanie mai scurtă, ca să vezi primele rezultate.</p></details>
-      <details><summary><span>05</span><span>Cum aflu dacă marketingul funcționează?</span><span class="sg" aria-hidden="true"></span></summary><p class="ans">Verificăm cifrele în fiecare săptămână și primești un raport simplu: ce am postat, câți oameni au văzut, câți au scris sau au venit și ce schimbăm în continuare.</p></details>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="contact">
-  <div class="wrap contact">
-    <div><p class="kick">07 · Contact</p><h2 class="h2 split">Hai să găsim <span class="acc">ritmul afacerii tale.</span></h2><p class="rv" style="color:var(--mut);font-size:19px;margin-top:20px;max-width:460px">Scrie-ne câteva rânduri despre afacere. Revenim cu un răspuns și stabilim o discuție.</p></div>
-    <form id="cform" class="rv" novalidate>
-      <div><label for="c-nume">Nume</label><input id="c-nume" class="field" type="text" required autocomplete="name"></div>
-      <div><label for="c-afacere">Afacerea ta</label><input id="c-afacere" class="field" type="text" autocomplete="organization"></div>
-      <div><label for="c-contact">Email sau telefon</label><input id="c-contact" class="field" type="text" required></div>
-      <div><label for="c-msg">Mesaj</label><textarea id="c-msg" class="field" rows="3"></textarea></div>
-      <button class="cta" type="submit">Trimite mesajul</button>
-      <p class="msg" id="cmsg" role="status"></p>
-    </form>
-  </div>
-</section>
 </main>
-
-<footer class="dark">
-  <div class="wrap row">
-    <div><svg class="lg" viewBox="0 0 820 380" role="img" aria-label="RITM"><use href="#lg"/></svg><p>Afacerea ta, în ritmul potrivit.</p></div>
-    <p>© 2026 RITM · Agenție creativă</p>
+<footer>
+  <div class="contacts">
+    <a class="c" href="mailto:salut@ritm.md"><span>Email</span><strong>salut@ritm.md</strong></a>
+    <a class="c" href="tel:+37362050151"><span>Telefon</span><strong>+373 62 050 151</strong></a>
+    <a class="c" href="https://instagram.com/ritm.agency"><span>Instagram</span><strong>@ritm.agency</strong></a>
   </div>
-  <div class="eq" data-eq="80"></div>
 </footer>
-
 <script>
 {
-/* Adresa la care ajung mesajele din formular. Completeaz-o pentru ca formularul să funcționeze. */
-const EMAIL='';
-
-const R=(()=>{let s=7;return()=>(s=(s*16807)%2147483647)/2147483647})();
-const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-document.querySelectorAll('[data-eq]').forEach(el=>{el.innerHTML=Array.from({length:+el.dataset.eq},()=>`<i style="--d:${(0.7+R()*1.1).toFixed(2)}s;--dl:-${(R()*2).toFixed(2)}s;--lo:${(0.06+R()*.12).toFixed(2)};--hi:${(0.75*(0.45+R()*.55)).toFixed(2)}"></i>`).join('')});
-
-/* titluri: cuvintele urcă pe rând */
-document.querySelectorAll('.split').forEach(el=>{let w=0;const out=[];
-  const wrap=(t,c)=>t.split(/([ \t\n]+)/).map(x=>/^[ \t\n]+$/.test(x)?' ':x?`<span class="wd" style="--w:${w++}"><span${c?` class="${esc(c)}"`:''}>${esc(x)}</span></span>`:'').join('');
-  el.childNodes.forEach(n=>{if(n.nodeType===3)out.push(wrap(n.textContent));else if(n.nodeType===1)out.push(wrap(n.textContent,n.className))});
-  el.innerHTML=out.join('');});
-
-/* ordinea de apariție în fiecare grup */
-document.querySelectorAll('.g4,.g3,.stack').forEach(g=>[...g.children].filter(c=>c.classList.contains('rv')).forEach((c,i)=>c.style.setProperty('--i',i)));
-document.querySelectorAll('.path .it').forEach((c,i)=>{c.style.transitionDelay=(0.3+i*0.35)+'s'});
-
-/* numere care cresc */
-function count(el){const to=+el.dataset.to;if(reduce){el.textContent=fmt(to);return}const t0=performance.now(),dur=1300;
-  const step=t=>{const p=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-p,3);el.textContent=fmt(Math.round(to*e/10)*10);if(p<1)requestAnimationFrame(step)};requestAnimationFrame(step)}
-
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add('in');
-  el.querySelectorAll('.cnt').forEach(c=>setTimeout(()=>count(c),400));io.unobserve(el)}),{threshold:.18,rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.rv,.split').forEach(el=>io.observe(el));
-
-/* meniul devine deschis la culoare după hero */
-const nav=document.getElementById('nav'),hero=document.getElementById('top');
-const navIo=new IntersectionObserver(([e])=>nav.classList.toggle('solid',!e.isIntersecting),{rootMargin:'-72px 0px 0px 0px'});navIo.observe(hero);
-
-
-/* formular */
-const f=document.getElementById('cform'),msg=document.getElementById('cmsg');
-f.addEventListener('submit',e=>{e.preventDefault();
-  const v=id=>document.getElementById(id).value.trim();
-  if(!v('c-nume')||!v('c-contact')){msg.textContent='Scrie numele și un email sau telefon, ca să te putem contacta.';return}
-  if(!EMAIL){msg.textContent='Formularul nu este încă conectat. Te rugăm să revii în curând.';return}
-  const body=`Nume: ${v('c-nume')}\nAfacerea: ${v('c-afacere')}\nContact: ${v('c-contact')}\n\n${v('c-msg')}`;
-  location.href=`mailto:${EMAIL}?subject=${encodeURIComponent('Mesaj de pe site, RITM')}&body=${encodeURIComponent(body)}`;
-  msg.textContent=`Se deschide aplicația de email. Dacă nu se deschide, scrie-ne la ${EMAIL}.`;
-});
+let s=11;const R=()=>(s=(s*16807)%2147483647)/2147483647;
+const eq=document.getElementById('eq');
+eq.innerHTML=Array.from({length:48},()=>`<i style="--d:${(0.6+R()*1).toFixed(2)}s;--dl:-${(R()*2).toFixed(2)}s;--lo:${(0.08+R()*.15).toFixed(2)};--hi:${(0.45+R()*.55).toFixed(2)}"></i>`).join('');
+const logo=document.getElementById('logo');
+logo.addEventListener('click',()=>{const c=logo.cloneNode(true);logo.replaceWith(c);c.id='logo';c.addEventListener('click',()=>location.reload())});
 }
 </script>
 </body>
